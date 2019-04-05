@@ -1,5 +1,4 @@
 #include "Kernal.h"
-// #include <TimeoutManager.h>
 
 Kernal::Kernal() {
   services = ServiceManager::getInstance();

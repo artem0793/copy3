@@ -2,23 +2,25 @@
 
 #define _TIMEOUT_MANAGER_H
 
-const int unsigned SERVICE_MAX_TIMEOUT_QUENTITY = 10;
-
+#include <Arduino.h>
 #include <Service.h>
 #include "Timeout.h"
+
+const int unsigned SERVICE_MAX_TIMEOUT_QUENTITY = 10;
 
 class TimeoutService: public Service {
 
   protected:
 
-    Timeout * queue[SERVICE_MAX_TIMEOUT_QUENTITY] = {};
+    Timeout* queue[SERVICE_MAX_TIMEOUT_QUENTITY] = {};
 
     int getFreeIndex() {
       int index = -1;
 
       for (int unsigned i = 0; i < SERVICE_MAX_TIMEOUT_QUENTITY; i++) {
-        if (!isset_object(this->queue[i])) {
+        if (!isset_object(queue[i])) {
           index = i;
+
           break;
         }
       }
@@ -32,24 +34,25 @@ class TimeoutService: public Service {
 
   public:
 
-    static TimeoutService * getInstance() {
-      static TimeoutService * instance = new TimeoutService();
+    static TimeoutService* getInstance() {
+      static TimeoutService* instance = new TimeoutService();
 
       return instance;
     }
 
-    void add(Timeout * timeout) {
-      int index = this->getFreeIndex();
+    void add(Timeout* timeout) {
+      int index = getFreeIndex();
 
       if (index != -1) {
-        this->queue[index] = timeout;
+        queue[index] = timeout;
       }
     }
 
-    void remove(Timeout * timeout) {
+    void remove(Timeout* timeout) {
       for (int unsigned i = 0; i < SERVICE_MAX_TIMEOUT_QUENTITY; i++) {
-        if (isset_object(this->queue[i]) && this->queue[i] == timeout) {
-          this->queue[i] = NULL;
+        if (isset_object(queue[i]) && queue[i] == timeout) {
+          queue[i] = {};
+
           break;
         }
       }
@@ -60,12 +63,12 @@ class TimeoutService: public Service {
 
       for (int unsigned i = 0; i < SERVICE_MAX_TIMEOUT_QUENTITY; i++) {
         if (
-            isset_object(this->queue[i]) &&
-            this->queue[i]->expireTime <= timer
+            isset_object(queue[i]) &&
+            queue[i]->expireTime <= timer
         ) {
-          this->queue[i]->execute();
+          queue[i]->execute();
 
-          delete this->queue[i];
+          delete queue[i];
         }
       }
     }

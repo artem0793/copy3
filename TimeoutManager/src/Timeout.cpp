@@ -3,7 +3,7 @@
 #include "TimeoutManager.h"
 
 Timeout::Timeout(unsigned long time) {
-  this->expireTime = millis() + time;
+  expireTime = millis() + time;
   TimeoutService::getInstance()->add(this);
 };
 
