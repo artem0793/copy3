@@ -23,7 +23,7 @@ class EventTarget {
      */
     int getFreeMapIndex() {
       for (int unsigned index = 0; index < EVENT_TARGET_SIZE; index++) {
-        if (isset_object(this->handlers[index]) == false) {
+        if (isset_object(handlers[index]) == false) {
           return index;
         }
       }
@@ -36,7 +36,7 @@ class EventTarget {
     /**
      * Add hendler to event.
      */
-    void on(const char* type, EventCallback<TargetType> * callback) {
+    void on(const char* type, EventCallback<TargetType>* callback) {
       int index = getFreeMapIndex();
 
       if (index != -1) {
@@ -48,10 +48,10 @@ class EventTarget {
     /**
      * Remove event handler.
      */
-    void off(EventCallback<TargetType> * callback) {
+    void off(EventCallback<TargetType>* callback) {
       for (int unsigned index = 0; index < EVENT_TARGET_SIZE; index++) {
-        if (isset_object(this->handlers[index]) == true && this->handlers[index] == callback) {
-          delete this->handlers[index];
+        if (isset_object(handlers[index]) == true && handlers[index] == callback) {
+          delete handlers[index];
         }
       }
     }
@@ -59,7 +59,7 @@ class EventTarget {
     /**
      * Fire all events by group.
      */
-    void dispatch(Event<TargetType> * event) {
+    void dispatch(Event<TargetType>* event) {
       for (int unsigned index = 0; index < EVENT_TARGET_SIZE; index++) {
         if (isset_object(handlers[index]) && handlers[index]->type == event->type) {
           handlers[index]->callback(event);

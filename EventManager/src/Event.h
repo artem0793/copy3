@@ -26,7 +26,7 @@ class Event {
     /**
      * Event constructor.
      */
-    Event(const char* type, TargetType * target): type(type), target(target) {
+    Event(const char* type, TargetType* target): type(type), target(target) {
 
     }
 

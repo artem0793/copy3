@@ -24,7 +24,7 @@ class EventCallback: public BaseObject {
     /**
      * Handler callback.
      */
-    virtual void callback(Event<TargetType> * event) {};
+    virtual void callback(Event<TargetType>* event) {};
 
 };
 

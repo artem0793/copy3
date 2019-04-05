@@ -9,7 +9,7 @@ class Element: public EventTarget<Element> {
 
 class ElementEventCallback: public EventCallback<Element> {
   protected:
-    void callback(Event<Element> * event) {
+    void callback(Event<Element>* event) {
       Serial.println(event->target->text);
     }
 };
@@ -17,8 +17,8 @@ class ElementEventCallback: public EventCallback<Element> {
 void setup() {
   Serial.begin(9600);
   Serial.println("Setup - start");
-  Element * item = new Element;
-  ElementEventCallback * callback = new ElementEventCallback();
+  Element* item = new Element;
+  ElementEventCallback* callback = new ElementEventCallback();
   item->on("construct", callback);
   item->dispatch(
     new Event<Element>("construct", item)
