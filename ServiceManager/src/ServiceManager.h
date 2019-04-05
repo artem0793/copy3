@@ -4,7 +4,7 @@
 
 #include "Service.h"
 
-const int unsigned SERVICE_MAX_QUENTITY = 10;
+const unsigned int SERVICE_MAX_QUENTITY = 10;
 
 class ServiceManager {
 
@@ -14,17 +14,17 @@ class ServiceManager {
 
   public:
 
-    Service * services[SERVICE_MAX_QUENTITY] = {};
+    Service* services[SERVICE_MAX_QUENTITY] = {};
 
-    static ServiceManager * getInstance();
+    static ServiceManager* getInstance();
 
     int getFreeIndex();
 
-    void add(Service * service);
+    void add(Service* service);
 
-    void remove(Service * service);
+    void remove(Service* service);
 
-    Service * get(String name);
+    Service* get(const char* name);
 
     void process();
 

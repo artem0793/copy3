@@ -3,23 +3,23 @@
 
 #define _KERNAL_H
 
-#include <Arduino.h>
 #include <ServiceManager.h>
 
 class Kernal {
+
   protected:
 
-    ServiceManager * services;
+    ServiceManager* services;
 
     Kernal();
 
   public:
 
-    ServiceManager * getServiceManager();
+    ServiceManager* getServiceManager();
 
-    static Service * service(String name);
+    static Service* service(const char* name);
 
-    static Kernal * getInstance();
+    static Kernal* getInstance();
 
     static void serviceProcess();
 

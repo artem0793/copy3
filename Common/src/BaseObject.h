@@ -8,11 +8,11 @@ const char BASE_OBJECT_NO_EMPTY = *"+";
 const char BASE_OBJECT_EMPTY = *"";
 
 class BaseObject {
-  
-  public:   
-    
+
+  public:
+
     char ISSET;
-    
+
     BaseObject();
 
     ~BaseObject();

@@ -1,9 +1,13 @@
 
+/**
+ * @file
+ * Service.
+ */
+
 #include "Service.h"
 #include "ServiceManager.h"
 
-Service::Service(String name) {
-  this->name = name;
+Service::Service(const char* name): name(name) {
   ServiceManager::getInstance()->add(this);
 };
 

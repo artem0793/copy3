@@ -8,9 +8,11 @@ const int unsigned SERVICE_MAX_TIMEOUT_QUENTITY = 10;
 #include "Timeout.h"
 
 class TimeoutService: public Service {
+
   protected:
+
     Timeout * queue[SERVICE_MAX_TIMEOUT_QUENTITY] = {};
-    
+
     int getFreeIndex() {
       int index = -1;
 
@@ -23,14 +25,13 @@ class TimeoutService: public Service {
 
       return index;
     }
-    
-  
+
     TimeoutService(): Service("timeout.manager") {
-      
+
     };
-  
+
   public:
-    
+
     static TimeoutService * getInstance() {
       static TimeoutService * instance = new TimeoutService();
 
@@ -39,12 +40,12 @@ class TimeoutService: public Service {
 
     void add(Timeout * timeout) {
       int index = this->getFreeIndex();
-      
+
       if (index != -1) {
         this->queue[index] = timeout;
       }
     }
-  
+
     void remove(Timeout * timeout) {
       for (int unsigned i = 0; i < SERVICE_MAX_TIMEOUT_QUENTITY; i++) {
         if (isset_object(this->queue[i]) && this->queue[i] == timeout) {
@@ -68,6 +69,7 @@ class TimeoutService: public Service {
         }
       }
     }
+
 };
 
 #endif

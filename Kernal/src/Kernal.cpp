@@ -1,15 +1,15 @@
 #include "Kernal.h"
-#include <TimeoutManager.h>
+// #include <TimeoutManager.h>
 
 Kernal::Kernal() {
-  this->services = ServiceManager::getInstance();
+  services = ServiceManager::getInstance();
 };
 
 ServiceManager * Kernal::getServiceManager() {
-  return this->services;
+  return services;
 };
 
-Service * Kernal::service(String name) {
+Service * Kernal::service(const char* name) {
   return Kernal::getInstance()
     ->getServiceManager()
     ->get(name);
@@ -18,7 +18,7 @@ Service * Kernal::service(String name) {
 Kernal * Kernal::getInstance() {
   static Kernal * instance = new Kernal;
 
-  return instance; 
+  return instance;
 };
 
 void Kernal::serviceProcess() {

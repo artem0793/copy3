@@ -8,7 +8,7 @@ class Service: public BaseObject {
 
   public:
 
-    String name;
+    const char* name;
 
     virtual void execute() {
 
@@ -16,7 +16,7 @@ class Service: public BaseObject {
 
   protected:
 
-    Service(String name);
+    Service(const char* name);
 
     ~Service();
 
