@@ -26,9 +26,8 @@ class Event {
     /**
      * Event constructor.
      */
-    Event(String type, TargetType * target) {
-      this->type = type;
-      this->target = target;
+    Event(String type, TargetType * target): type(type), target(target) {
+
     }
 
 };

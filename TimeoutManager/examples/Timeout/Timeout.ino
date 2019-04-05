@@ -1,5 +1,5 @@
 #include <Timeout.h>
-#include <TimeoutManager.h>
+#include <TimeoutService.h>
 #include <Kernal.h>
 
 class MyTimeout: public Timeout {
