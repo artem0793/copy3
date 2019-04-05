@@ -11,17 +11,17 @@ class Kernal {
 
     ServiceManager* services;
 
-    Kernal();
+    Kernal(void);
 
   public:
 
-    ServiceManager* getServiceManager();
+    ServiceManager* getServiceManager(void);
 
-    static Service* service(const char* name);
+    static Service* service(const char*);
 
-    static Kernal* getInstance();
+    static Kernal* getInstance(void);
 
-    static void serviceProcess();
+    static void serviceProcess(void);
 
 };
 

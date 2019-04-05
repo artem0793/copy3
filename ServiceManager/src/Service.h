@@ -10,15 +10,15 @@ class Service: public BaseObject {
 
     const char* name;
 
-    virtual void execute() {
+    virtual void execute(void) {
 
     };
 
   protected:
 
-    Service(const char* name);
+    Service(const char*);
 
-    ~Service();
+    ~Service(void);
 
 };
 

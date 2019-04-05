@@ -10,11 +10,11 @@ class Timeout: public BaseObject {
 
     unsigned long expireTime;
 
-    Timeout(unsigned long time = 0);
+    Timeout(unsigned long);
 
-    ~Timeout();
+    ~Timeout(void);
 
-    virtual void execute() {
+    virtual void execute(void) {
 
     };
 

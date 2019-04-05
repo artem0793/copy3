@@ -10,23 +10,23 @@ class ServiceManager {
 
   protected:
 
-    ServiceManager();
+    ServiceManager(void);
 
   public:
 
     Service* services[SERVICE_MAX_QUENTITY] = {};
 
-    static ServiceManager* getInstance();
+    static ServiceManager* getInstance(void);
 
-    int getFreeIndex();
+    int getFreeIndex(void);
 
-    void add(Service* service);
+    void add(Service*);
 
-    void remove(Service* service);
+    void remove(Service*);
 
-    Service* get(const char* name);
+    Service* get(const char*);
 
-    void process();
+    void process(void);
 
 };
 

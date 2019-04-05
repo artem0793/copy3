@@ -1,6 +1,6 @@
 #include <Kernal.h>
 #include "Timeout.h"
-#include "TimeoutManager.h"
+#include "TimeoutService.h"
 
 Timeout::Timeout(unsigned long time) {
   expireTime = millis() + time;

@@ -13,9 +13,9 @@ class BaseObject {
 
     char ISSET;
 
-    BaseObject();
+    BaseObject(void);
 
-    ~BaseObject();
+    ~BaseObject(void);
 
 };
 
