@@ -19,7 +19,7 @@ class EventCallback: public BaseObject {
     /**
      * Envent name.
      */
-    String type;
+    const char* type;
 
     /**
      * Handler callback.

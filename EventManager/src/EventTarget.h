@@ -16,7 +16,7 @@ class EventTarget {
     /**
      * Array of handler with all events.
      */
-    EventCallback<TargetType> * handlers[EVENT_TARGET_SIZE];
+    EventCallback<TargetType>* handlers[EVENT_TARGET_SIZE] = {};
 
     /**
      * Find free plase in array.
@@ -24,7 +24,7 @@ class EventTarget {
     int getFreeMapIndex() {
       for (int unsigned index = 0; index < EVENT_TARGET_SIZE; index++) {
         if (isset_object(this->handlers[index]) == false) {
-          return index;  
+          return index;
         }
       }
 
@@ -36,12 +36,12 @@ class EventTarget {
     /**
      * Add hendler to event.
      */
-    void on(String type, EventCallback<TargetType> * callback) {
-      int index = this->getFreeMapIndex();
+    void on(const char* type, EventCallback<TargetType> * callback) {
+      int index = getFreeMapIndex();
 
       if (index != -1) {
         callback->type = type;
-        this->handlers[index] = callback;
+        handlers[index] = callback;
       }
     }
 
@@ -61,12 +61,10 @@ class EventTarget {
      */
     void dispatch(Event<TargetType> * event) {
       for (int unsigned index = 0; index < EVENT_TARGET_SIZE; index++) {
-        if (isset_object(this->handlers[index]) == true && this->handlers[index]->type == event->type) {
-          this->handlers[index]->callback(event);
-          Serial.print(index);
-          Serial.println("X");
+        if (isset_object(handlers[index]) && handlers[index]->type == event->type) {
+          handlers[index]->callback(event);
         }
-      } 
+      }
 
       delete event;
     }

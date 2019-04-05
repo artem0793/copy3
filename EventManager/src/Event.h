@@ -16,17 +16,17 @@ class Event {
     /**
      * Event name.
      */
-    String type;
+    const char* type;
 
     /**
      * Target element.
      */
-    TargetType * target;
+    TargetType* target;
 
     /**
      * Event constructor.
      */
-    Event(String type, TargetType * target): type(type), target(target) {
+    Event(const char* type, TargetType * target): type(type), target(target) {
 
     }
 
