@@ -3,17 +3,15 @@
 
 #define _BASE_OBJECT_H
 
-#include <Arduino.h>
+const char BASE_OBJECT_NO_EMPTY = *"+";
 
-const String BASE_OBJECT_NO_EMPTY = "+";
-
-const String BASE_OBJECT_EMPTY = "";
+const char BASE_OBJECT_EMPTY = *"";
 
 class BaseObject {
   
   public:   
     
-    String ISSET;
+    char ISSET;
     
     BaseObject();
 
@@ -21,6 +19,6 @@ class BaseObject {
 
 };
 
-bool isset_object(BaseObject * obj);
+bool isset_object(BaseObject* obj);
 
 #endif
