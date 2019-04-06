@@ -4,7 +4,7 @@
 
 #include "Service.h"
 
-const unsigned int SERVICE_MAX_QUENTITY = 10;
+const unsigned int SERVICE_MAX_QUENTITY = 15;
 
 class ServiceManager {
 

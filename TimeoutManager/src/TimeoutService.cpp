@@ -22,7 +22,7 @@ TimeoutService* TimeoutService::getInstance() {
   return instance;
 };
 
-TimeoutService::TimeoutService(): Service("timeout.manager") {
+TimeoutService::TimeoutService(): Service("timeout.service") {
 
 };
 
@@ -31,30 +31,37 @@ void TimeoutService::add(Timeout* timeout) {
 
   if (index != -1) {
     queue[index] = timeout;
+    queue[index]->index = index;
   }
 };
 
 void TimeoutService::remove(Timeout* timeout) {
-  for (int unsigned i = 0; i < SERVICE_MAX_TIMEOUT_QUENTITY; i++) {
-    if (isset_object(queue[i]) && queue[i] == timeout) {
-      queue[i] = {};
+  for (int unsigned index = 0; index < SERVICE_MAX_TIMEOUT_QUENTITY; index++) {
+    if (isset_object(queue[index]) && queue[index] == timeout) {
+      queue[index] = {};
 
       break;
     }
   }
 };
 
+void TimeoutService::removeAt(unsigned int index) {
+  if (isset_object(queue[index])) {
+    delete queue[index];
+  }
+};
+
 void TimeoutService::execute() {
   unsigned long timer = millis();
 
-  for (int unsigned i = 0; i < SERVICE_MAX_TIMEOUT_QUENTITY; i++) {
+  for (int unsigned index = 0; index < SERVICE_MAX_TIMEOUT_QUENTITY; index++) {
     if (
-        isset_object(queue[i]) &&
-        queue[i]->expireTime <= timer
+        isset_object(queue[index]) &&
+        queue[index]->expireTime <= timer
     ) {
-      queue[i]->execute();
+      queue[index]->execute();
 
-      delete queue[i];
+      delete queue[index];
     }
   }
 };

@@ -4,18 +4,18 @@ Kernal::Kernal() {
   services = ServiceManager::getInstance();
 };
 
-ServiceManager * Kernal::getServiceManager() {
+ServiceManager* Kernal::getServiceManager() {
   return services;
 };
 
-Service * Kernal::service(const char* name) {
+Service* Kernal::service(const char* name) {
   return Kernal::getInstance()
     ->getServiceManager()
     ->get(name);
 };
 
-Kernal * Kernal::getInstance() {
-  static Kernal * instance = new Kernal;
+Kernal* Kernal::getInstance() {
+  static Kernal* instance = new Kernal;
 
   return instance;
 };

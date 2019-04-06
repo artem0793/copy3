@@ -6,7 +6,7 @@
 #include <Service.h>
 #include "Timeout.h"
 
-const int unsigned SERVICE_MAX_TIMEOUT_QUENTITY = 10;
+const int unsigned SERVICE_MAX_TIMEOUT_QUENTITY = 15;
 
 class TimeoutService: public Service {
 
@@ -25,6 +25,8 @@ class TimeoutService: public Service {
     void add(Timeout*);
 
     void remove(Timeout*);
+
+    void removeAt(unsigned int);
 
     void execute(void);
 

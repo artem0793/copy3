@@ -8,6 +8,8 @@ class Timeout: public BaseObject {
 
   public:
 
+    unsigned int index;
+
     unsigned long expireTime;
 
     Timeout(unsigned long);
