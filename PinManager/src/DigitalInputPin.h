@@ -3,29 +3,21 @@
 
 #define DIGITAL_INPUT_PIN_H
 
-#include <BaseObject.h>
+#include "AbstractPin.h"
 
-class DigitalInputPin: public BaseObject {
+class DigitalInputPin: public AbstractPin {
 
   protected:
 
-    unsigned int id;
-
-    bool value;
+    unsigned int value;
 
   public:
 
-    unsigned int severity;
-
-    unsigned int timeoutIndex;
-
-    DigitalInputPin(unsigned int, unsigned int);
-
-    ~DigitalInputPin();
+    DigitalInputPin(unsigned int id, unsigned int severity);
 
     void watch(void);
 
-    virtual void onChange(void) {};
+    virtual void onChange(unsigned int) {};
 
 };
 
