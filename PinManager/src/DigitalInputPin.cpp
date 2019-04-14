@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include "DigitalInputPin.h"
-#include "AbstractPin.h"
+#include "AbstractInputPin.h"
 
-DigitalInputPin::DigitalInputPin(unsigned int id, unsigned int severity): AbstractPin(id, severity) {
+DigitalInputPin::DigitalInputPin(unsigned int id, unsigned int severity): AbstractInputPin(id, severity) {
   pinMode(id, INPUT);
 };
 

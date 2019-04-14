@@ -3,17 +3,17 @@
 #define PIN_WHATCHER_TIMEOUT_H
 
 #include "Timeout.h"
-#include "AbstractPin.h"
+#include "AbstractInputPin.h"
 
 class TimeoutWatcherPin: public Timeout {
 
   private:
 
-    AbstractPin* pin;
+    AbstractInputPin* pin;
 
   public:
 
-    TimeoutWatcherPin(AbstractPin* pin): Timeout(pin->severity), pin(pin) {};
+    TimeoutWatcherPin(AbstractInputPin* pin): Timeout(pin->severity), pin(pin) {};
 
     void execute();
 

@@ -3,13 +3,9 @@
 
 #define DIGITAL_INPUT_PIN_H
 
-#include "AbstractPin.h"
+#include "AbstractInputPin.h"
 
-class DigitalInputPin: public AbstractPin {
-
-  protected:
-
-    unsigned int value;
+class DigitalInputPin: public AbstractInputPin {
 
   public:
 
