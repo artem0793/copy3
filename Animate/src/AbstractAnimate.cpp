@@ -5,11 +5,13 @@
 #include "AbstractAnimate.h"
 #include "AnimateTimeout.h"
 
-AbstractAnimate::AbstractAnimate(unsigned int timing, unsigned int duration, unsigned int step, bool reverse): timing(timing), duration(duration), step(step), reverse(reverse) {
-  start = millis();
+AbstractAnimate::AbstractAnimate(unsigned int timing, unsigned int duration, unsigned int step, bool auto_start = true, bool reverse = false): timing(timing), duration(duration), step(step), reverse(reverse) {
   progress = reverse ? 1 : 0;
 
-  play();
+  if (auto_start == true) {
+    start = millis();
+    play();
+  }
 };
 
 AbstractAnimate::~AbstractAnimate() {

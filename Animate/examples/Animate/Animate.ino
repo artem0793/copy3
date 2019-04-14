@@ -7,7 +7,7 @@ class MyAnimate: public AbstractAnimate {
 
   public:
 
-    MyAnimate(): AbstractAnimate(A_QUAD_TIMING, 1000, 100) {
+    MyAnimate(): AbstractAnimate(A_QUAD_TIMING, 1000, 100, true, false) {
 
     };
 

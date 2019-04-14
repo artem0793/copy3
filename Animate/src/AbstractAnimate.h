@@ -34,7 +34,7 @@ class AbstractAnimate: public BaseObject {
 
     bool reverse;
 
-    AbstractAnimate(unsigned int timing, unsigned int duration, unsigned int step, bool reverse = false);
+    AbstractAnimate(unsigned int timing, unsigned int duration, unsigned int step, bool auto_start = true, bool reverse = false);
 
     ~AbstractAnimate();
 
