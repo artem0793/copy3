@@ -4,30 +4,45 @@
 #include "AnimateTimeout.h"
 #include "AbstractAnimate.h"
 
-
-float line_timing(float progress) {
+float linear_timing(float progress) {
   return progress;
-}
+};
+
+float quad_timing(float progress) {
+  return pow(progress, 2);
+};
+
+float circ_timing(float progress) {
+  return 1 - sin(acos(progress));
+};
 
 AnimateTimeout::AnimateTimeout(AbstractAnimate* animation): Timeout(animation->step), animation(animation) {
 
 };
 
 void AnimateTimeout::execute() {
-  float time_fraction = (millis() - animation->start) / animation->duration;
+  float time_passed = millis() - animation->start;
+  float time_fraction = time_passed / animation->duration;
 
   if (time_fraction > 1) {
     time_fraction = 1;
   }
 
   switch (animation->timing) {
+    case A_QUAD_TIMING:
+      animation->progress = quad_timing(time_fraction);
+      break;
 
-    case ANIMATE_TIMING_LINE:
-      animation->progress = line_timing(time_fraction);
-    break;
+    case A_CIRC_TIMING:
+      animation->progress = circ_timing(time_fraction);
+      break;
+
+    case A_LINEAR_TIMING:
+    default:
+      animation->progress = linear_timing(time_fraction);
+      break;
 
   }
-
 
   animation->draw();
   animation->play();

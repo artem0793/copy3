@@ -2,11 +2,21 @@
 
 #define ABSTRACT_ANIMATE_H
 
-#include <BaseObject>
+#include <BaseObject.h>
 
-const unsigned int ANIMATE_TIMING_LINE = 0;
+const unsigned int A_LINEAR_TIMING = 0;
+
+const unsigned int A_QUAD_TIMING = 1;
+
+const unsigned int A_CIRC_TIMING = 2;
+
+const unsigned int A_BOUNCE_TIMING = 3;
+
+float quad_timing(float progress);
 
 float line_timing(float progress);
+
+float circ_timing(float progress);
 
 class AbstractAnimate: public BaseObject {
 
@@ -14,11 +24,11 @@ class AbstractAnimate: public BaseObject {
 
     int timeoutIndex;
 
-    unsigned long start = 0;
+    unsigned long start;
 
     unsigned int duration;
 
-    unsigned int progress = 0;
+    float progress = 0;
 
     unsigned int step;
 

@@ -2,13 +2,17 @@
 #include <Kernal.h>
 
 class MyAnimate: public AbstractAnimate {
-  public:
-    MyAnimate(): AbstractAnimate(ANIMATE_TIMING_LINE, 4000, 50) {
 
-    }
+  public:
+
+    MyAnimate(): AbstractAnimate(A_QUAD_TIMING, 1500, 50) {
+
+    };
+
     void draw() {
       Serial.println(progress);
     };
+
 };
 
 void setup() {
