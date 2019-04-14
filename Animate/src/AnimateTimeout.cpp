@@ -49,5 +49,11 @@ void AnimateTimeout::execute() {
   }
 
   animation->draw();
-  animation->play();
+
+  if ((animation->reverse == true && animation->progress <= 0) || (animation->reverse == false && animation->progress >= 1)) {
+    animation->done();
+  }
+  else {
+    animation->play();
+  }
 };

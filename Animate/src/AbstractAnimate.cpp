@@ -20,6 +20,16 @@ void AbstractAnimate::draw() {
 
 };
 
+void AbstractAnimate::done() {
+
+};
+
+void AbstractAnimate::setReverse() {
+  start = millis();
+  reverse = reverse ? false : true;
+  progress = reverse ? 1 : 0;
+};
+
 void AbstractAnimate::play() {
   if ((reverse == false && progress < 1) || (reverse == true && progress > 0)) {
     Timeout* timeout = new AnimateTimeout(this);
@@ -28,7 +38,11 @@ void AbstractAnimate::play() {
 };
 
 void AbstractAnimate::stop() {
-  TimeoutService* timeout_service = Kernal::service("timeout.service");
+  if (timeoutIndex > -1) {
+    TimeoutService* timeout_service = Kernal::service("timeout.service");
 
-  timeout_service->removeAt(timeoutIndex);
+    timeout_service->removeAt(timeoutIndex);
+
+    timeoutIndex = -1;
+  }
 };

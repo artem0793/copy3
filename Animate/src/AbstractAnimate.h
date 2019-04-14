@@ -22,7 +22,7 @@ class AbstractAnimate: public BaseObject {
 
   public:
 
-    int timeoutIndex;
+    int timeoutIndex = -1;
 
     unsigned long start;
 
@@ -42,9 +42,13 @@ class AbstractAnimate: public BaseObject {
 
     virtual void draw();
 
+    virtual void done();
+
     void play(void);
 
     void stop(void);
+
+    void setReverse(void);
 
 };
 
