@@ -9,6 +9,7 @@ void DigitalOutputPin::setValue(unsigned int new_value) {
   if (value != new_value) {
     digitalWrite(id, new_value > 0 ? HIGH : LOW);
     onChange(new_value);
+    AbstractOutputPin::setValue(new_value);
   }
 };
 

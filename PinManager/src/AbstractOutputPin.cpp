@@ -13,5 +13,5 @@ void AbstractOutputPin::setValue(unsigned int new_value) {
 };
 
 unsigned int AbstractOutputPin::getValue() {
-  return value;
+  return this->value;
 };
