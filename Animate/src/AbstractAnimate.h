@@ -28,13 +28,15 @@ class AbstractAnimate: public BaseObject {
 
     unsigned int duration;
 
-    float progress = 0;
+    float progress;
 
     unsigned int step;
 
     unsigned int timing;
 
-    AbstractAnimate(unsigned int timing, unsigned int duration, unsigned int step);
+    bool reverse;
+
+    AbstractAnimate(unsigned int timing, unsigned int duration, unsigned int step, bool reverse = false);
 
     ~AbstractAnimate();
 

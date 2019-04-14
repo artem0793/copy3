@@ -5,8 +5,9 @@
 #include "AbstractAnimate.h"
 #include "AnimateTimeout.h"
 
-AbstractAnimate::AbstractAnimate(unsigned int timing, unsigned int duration, unsigned int step): timing(timing), duration(duration), step(step) {
+AbstractAnimate::AbstractAnimate(unsigned int timing, unsigned int duration, unsigned int step, bool reverse): timing(timing), duration(duration), step(step), reverse(reverse) {
   start = millis();
+  progress = reverse ? 1 : 0;
 
   play();
 };
@@ -20,7 +21,7 @@ void AbstractAnimate::draw() {
 };
 
 void AbstractAnimate::play() {
-  if (progress < 1) {
+  if ((reverse == false && progress < 1) || (reverse == true && progress > 0)) {
     Timeout* timeout = new AnimateTimeout(this);
     timeoutIndex = timeout->index;
   }

@@ -28,6 +28,10 @@ void AnimateTimeout::execute() {
     time_fraction = 1;
   }
 
+  if (animation->reverse == true) {
+    time_fraction = 1 - time_fraction;
+  }
+
   switch (animation->timing) {
     case A_QUAD_TIMING:
       animation->progress = quad_timing(time_fraction);
