@@ -10,8 +10,6 @@ const unsigned int A_QUAD_TIMING = 1;
 
 const unsigned int A_CIRC_TIMING = 2;
 
-const unsigned int A_BOUNCE_TIMING = 3;
-
 float quad_timing(float progress);
 
 float line_timing(float progress);
