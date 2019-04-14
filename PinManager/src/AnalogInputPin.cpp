@@ -8,7 +8,8 @@ AnalogInputPin::AnalogInputPin(unsigned int id, unsigned int severity): Abstract
 };
 
 void AnalogInputPin::watch() {
-  unsigned int new_value = analogRead(id);
+  unsigned int sensorValue = analogRead(id);
+  unsigned int new_value = map(sensorValue, 0, 1023, 0, 100);
 
   if (value != new_value) {
     value = new_value;
