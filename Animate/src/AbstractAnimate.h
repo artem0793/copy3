@@ -2,35 +2,37 @@
 
 #define ABSTRACT_ANIMATE_H
 
+#include <BaseObject>
+
 const unsigned int ANIMATE_TIMING_LINE = 0;
 
 float line_timing(float progress);
 
-class AbstractAnimate {
+class AbstractAnimate: public BaseObject {
 
-public:
+  public:
 
-  int timeoutIndex;
+    int timeoutIndex;
 
-  unsigned long start = 0;
+    unsigned long start = 0;
 
-  unsigned int duration;
+    unsigned int duration;
 
-  unsigned int progress = 0;
+    unsigned int progress = 0;
 
-  unsigned int step;
+    unsigned int step;
 
-  unsigned int timing;
+    unsigned int timing;
 
-  AbstractAnimate(unsigned int timing, unsigned int duration, unsigned int step);
+    AbstractAnimate(unsigned int timing, unsigned int duration, unsigned int step);
 
-  ~AbstractAnimate();
+    ~AbstractAnimate();
 
-  virtual void draw();
+    virtual void draw();
 
-  void play(void);
+    void play(void);
 
-  void stop(void);
+    void stop(void);
 
 };
 
